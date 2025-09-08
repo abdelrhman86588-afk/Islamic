@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الألغاز الدينية</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #f0f8ff, #e6e6fa);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4B0082;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 2em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .quiz-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.2s;
+        }
+
+        .quiz-card:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: #4B0082;
+            font-size: 1.2em;
+        }
+
+        button {
+            background-color: #4B0082;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #6a0dad;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #4B0082;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        منصة الألغاز الدينية
+    </header>
+
+    <main id="quiz-container">
+        <!-- الألغاز هتظهر هنا -->
+    </main>
+
+    <footer>
+        جميع الحقوق محفوظة &copy; 2025
+    </footer>
+
+    <script>
+        const quizzes = [
+            {question: "ما هو أطول سورة في القرآن؟", answer: "البقرة"},
+            {question: "من هو خاتم الأنبياء؟", answer: "محمد ﷺ"},
+            {question: "كم عدد ركعات الصلاة المفروضة؟", answer: "17"},
+            {question: "ما هي القبلة في الصلاة؟", answer: "الكعبة"},
+            {question: "من هو والد النبي إبراهيم عليه السلام؟", answer: "آزر"},
+            {question: "ما هي أول سورة نزلت في القرآن؟", answer: "العلق"},
+            {question: "كم عدد ركعات الفجر؟", answer: "2"},
+            {question: "كم عدد ركعات المغرب؟", answer: "3"},
+            {question: "كم عدد ركعات العشاء؟", answer: "4"},
+            {question: "كم عدد ركعات الظهر؟", answer: "4"},
+            {question: "كم عدد ركعات العصر؟", answer: "4"},
+            {question: "من هو أول من أسلم من الرجال؟", answer: "أبو بكر الصديق"},
+            {question: "من هو أول من أسلم من النساء؟", answer: "خديجة رضي الله عنها"},
+            {question: "ما هو الركن الأول من أركان الإسلام؟", answer: "الشهادتان"},
+            {question: "ما هو الركن الثاني من أركان الإسلام؟", answer: "الصلاة"},
+            {question: "ما هو الركن الثالث من أركان الإسلام؟", answer: "الزكاة"},
+            {question: "ما هو الركن الرابع من أركان الإسلام؟", answer: "الصوم"},
+            {question: "ما هو الركن الخامس من أركان الإسلام؟", answer: "الحج"},
+            {question: "من هو نبي الله الذي ابتلعه الحوت؟", answer: "يونس عليه السلام"},
+            {question: "من هو النبي الذي كلم الله مباشرة؟", answer: "موسى عليه السلام"},
+            {question: "ما هي ليلة القدر؟", answer: "ليلة خير من ألف شهر"},
+            {question: "كم عدد أسماء الله الحسنى؟", answer: "99"},
+            {question: "ما هو أكبر مسجد في العالم؟", answer: "المسجد الحرام"},
+            {question: "ما هي سورة المدثر؟", answer: "المدثر"},
+            {question: "كم عدد الأنبياء الذين ذكروا في القرآن؟", answer: "25"},
+            {question: "من هو النبي الذي ابتلاه الله بالعذاب بسبب قومه؟", answer: "نوح عليه السلام"},
+            {question: "من هو الصحابي الذي كتب القرآن مع النبي؟", answer: "عبد الله بن مسعود"},
+            {question: "ما هي الصلاة التي تصلى بعد الفجر؟", answer: "السنن الفجرية"},
+            {question: "ما هي السورة التي تسمى قلب القرآن؟", answer: "يس"},
+            {question: "ما هي السورة التي تسمى العروس؟", answer: "الرحمن"},
+            {question: "كم عدد سور القرآن الكريم؟", answer: "114"},
+            {question: "ما هي أطول آية في القرآن؟", answer: "آية الدين"},
+            {question: "من هو نبي الله الذي بنى السفينة؟", answer: "نوح عليه السلام"},
+            {question: "ما هو شهر الصوم في الإسلام؟", answer: "رمضان"},
+            {question: "ما هو اتجاه القبلة؟", answer: "الكعبة"},
+            {question: "ما هو أول يوم في الأسبوع الإسلامي؟", answer: "الأحد"},
+            {question: "من هو الصحابي المعروف بفاتح مكة؟", answer: "خالد بن الوليد"},
+            {question: "ما هو كتاب الله المنزل على موسى عليه السلام؟", answer: "التوراة"},
+            {question: "ما هو كتاب الله المنزل على عيسى عليه السلام؟", answer: "الإنجيل"},
+            {question: "ما هو كتاب الله المنزل على محمد ﷺ؟", answer: "القرآن الكريم"},
+            {question: "من هو أول شهيد في الإسلام؟", answer: "سعيد بن زيد"},
+            {question: "ما هي المدينة التي هاجر إليها النبي ﷺ؟", answer: "المدينة المنورة"},
+            {question: "ما هو أول مسجد بني في الإسلام؟", answer: "المسجد النبوي"},
+            {question: "من هو الصحابي المعروف بالبراء من المشركين؟", answer: "عبد الله بن عباس"},
+            {question: "ما هو اسم جبل النبي موسى؟", answer: "طور سيناء"},
+            {question: "ما هي الصلاة التي تصلى قبل المغرب؟", answer: "السنن قبل المغرب"},
+            {question: "ما هو الشهر الذي يلي رمضان؟", answer: "شوال"},
+            {question: "ما هو الدعاء الذي يقال عند الإفطار؟", answer: "اللهم إني لك صمت وبك آمنت وعليك توكلت"},
+            {question: "ما هو الركن الذي لا يصح الإسلام بدونه؟", answer: "الشهادتان"},
+            {question: "كم عدد أيام الحج؟", answer: "5"},
+            {question: "ما هو اسم جبل أحد؟", answer: "أحد"},
+            {question: "من هو أول مؤذن في الإسلام؟", answer: "بلال بن رباح"}
+        ];
+
+        const container = document.getElementById('quiz-container');
+
+        quizzes.forEach((quiz, index) => {
+            const card = document.createElement('div');
+            card.className = 'quiz-card';
+            card.innerHTML = `
+                <h2>لغز ${index + 1}: ${quiz.question}</h2>
+                <button onclick="alert('الإجابة: ${quiz.answer}')">عرض الإجابة</button>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
